@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>twenty one</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/white-theme.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+
+  <link href="https://fonts.googleapis.com/css2?family=Readex+Pro&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="wrapp">
+    <header class="header">
+      <div class="settings-bar">
+        <!-- <div class="settings">
+        <div class="settings__burger"></div>
+      </div> -->
+        <button class="settings-btn"><img class="" src="settings.svg" alt="" style="max-width: 50px;"></button>
+
+        <div class="instruction">
+          <div class="card instruction__card">
+            <div class="card__name instruction__name">?</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="table">
+        <div class="table__inner">
+          <ul class="table__count-list table__count-list--you"></ul>
+          <ul class="table__list table__list--you"></ul>
+          <span class="table__count table__count--you"></span>
+        </div>
+
+        <div class="table__inner">
+          <ul class="table__count-list table__count-list--rival"></ul>
+          <ul class="table__list table__list--rival"></ul>
+          <span class="table__count table__count--rival"></span>
+        </div>
+
+        <div class="table__btns">
+          <button class="table__btn table__btn--more">more</button>
+          <button class="table__btn table__btn--fold">fold</button>
+          <span class="table__btn-desc">× too early</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- <ul class="game__list">
+      <li class="game__item game__item--win">0</li>
+      <li class="game__item game__item--draw">0</li>
+      <li class="game__item game__item--lose">0</li>
+    </ul> -->
+
+    <ul class="bar">
+    </ul>
+
+    <div class="popup end-game-popup">
+      <p class='end-game-popup__text'></p>
+      <button class="end-game-popup__btn table__btn">resume</button>
+    </div>
+
+    <div class="popup instruction-popup">
+      <h1 class='instruction-popup__title'>twenty one</h1>
+
+      <ul class='instruction-popup__item'>
+        <li>
+          <h2 class='instruction-popup__win'>win</h2>
+        </li>
+        <li>if you get 21 points.</li>
+        <li>if you score more points than the dealer.</li>
+        <li>if the sum of points on the dealer's cards is more than 21.</li>
+      </ul>
+
+      <ul class='instruction-popup__item'>
+        <li>
+          <h2 class='instruction-popup__lose'>lose</h2>
+        </li>
+        <li>if you score more than 21.</li>
+        <li>if you score less points than the dealer.</li>
+      </ul>
+
+      <ul class='instruction-popup__item'>
+        <li>
+          <h2 class='instruction-popup__draw'>draw</h2>
+        </li>
+        <li>if your number is equal to the dealer and less than 21.</li>
+      </ul>
+
+      <span class="popup__close instruction-popup__close">&#10006;</span>
+    </div>
+
+    <div class="popup settings-popup">
+      <h3 class="settings-popup__title">settings</h3>
+      <ul>
+        <li class="settings-popup__item">
+          <label class="settings-popup__label">
+            <input class="settings-popup__checkbox move-game-counter" type="checkbox">
+            <div></div>
+            <p class="settings-popup__text">move the game counter to the main screen</p>
+          </label>
+        </li>
+
+        <li class="settings-popup__item">
+          <label class="settings-popup__label">
+            <input class="settings-popup__checkbox move-game-counter hideDJK" type="checkbox">
+            <div></div>
+            <p class="settings-popup__text">hide J, D, K</p>
+          </label>
+        </li>
+
+        <li class="settings-popup__item">
+          <div class="settings-popup__label settings-popup__label--line clear-bar">
+            <div></div>
+            <p class="settings-popup__text settings-popup__text--line">clear the counting bar</p>
+          </div>
+        </li>
+
+        <li class="settings-popup__item">
+          <div class="settings-popup__label settings-popup__label--line clear-coutbar">
+            <div></div>
+            <p class="settings-popup__text settings-popup__text--line">clear the counting game</p>
+          </div>
+        </li>
+      </ul>
+
+      <span class="popup__close settings-popup__close ">&#10006;</span>
+
+      <ul class="game__list">
+        <li class="game__item game__item--win">0</li>
+        <li class="game__item game__item--draw">0</li>
+        <li class="game__item game__item--lose">0</li>
+      </ul>
+
+      <div class="settings-popup__color-change">
+        <input type="checkbox" class="checkbox" id="chk" />
+        <label class="label" for="chk">
+          <span class="fa-D">D</span>
+          <span class="fa-W">W</span>
+          <div class="ball"></div>
+        </label>
+      </div>
+
+      <span class="settings-popup__winrate">winnrate:</span>
+    </div>
+
+  </div>
+  <script src="js/main.js"></script>
+</body>
+
+</html>

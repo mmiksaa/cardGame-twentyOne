@@ -1,0 +1,42 @@
+.white-theme {
+  background-color: #fff;
+}
+
+.white-theme .card {
+  background-color: #24a19da4;
+  border: 1px solid transparent;
+}
+
+.white-theme .card__name {
+  color: #FAEEE7;
+}
+
+.white-theme .table__count {
+  color: #BCCC9A;
+}
+
+.white-theme .table__btn--more {
+  background-color: #AC66CC;
+}
+
+.white-theme .table__btn--fold {
+  background-color: #C64756;
+}
+
+.white-theme .bar {
+  border-color: #C64756;
+  background-color: #96BB7C;
+}
+
+.white-theme .popup {
+  background-color: #fff;
+  color: #000;
+}
+
+.white-theme .end-game-popup {
+  background-color: #979797;
+}
+
+.white-theme .end-game-popup__btn {
+  background-color: #AC66CC;
+}

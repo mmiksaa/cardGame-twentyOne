@@ -1,0 +1,754 @@
+body {
+  font-family: 'Readex Pro', sans-serif;
+  overflow: hidden;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.wrapp {
+  overflow: hidden;
+  position: relative;
+  background-color: rgb(12, 12, 12);
+  transition: 0.5s background-color;
+}
+
+.wrapp-popup::after {
+  content: '';
+  /* filter: blur(1000px); */
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+input[type="checkbox"] {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.popup {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  border-radius: 20px;
+  background-color: #1d1d1d;
+  color: rgb(161, 150, 150);
+
+}
+
+.popup__close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 30px;
+  cursor: pointer;
+  color: rgb(161, 150, 150);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.settings-bar {
+  display: flex;
+  align-items: center;
+}
+
+.instruction__card:hover::before {
+  display: block;
+}
+
+.instruction__card::before {
+  content: 'how to play?';
+  display: none;
+  top: 15px;
+  left: 30px;
+  border-radius: 10px;
+  position: absolute;
+  text-align: center;
+  font-size: 13px;
+  width: 97px;
+  padding: 2px;
+  z-index: 1;
+  /* width: 100%; */
+  background-color: #ccc;
+  opacity: 0.7;
+}
+
+.instruction__card:hover .instruction__name {
+  color: rgb(255, 118, 0);
+}
+
+
+.table {
+  grid-row-gap: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: calc(100vh - 90px);
+}
+
+.table__inner {
+  display: flex;
+  justify-content: space-between;
+}
+
+.table__btns {
+  display: flex;
+  justify-content: space-between;
+  max-width: 320px;
+  position: relative;
+}
+
+.table__btn {
+  max-width: 150px;
+  width: 100%;
+  height: 40px;
+  border-radius: 20px;
+  border: none;
+  background-color: #3700b3;
+  color: #fff;
+  border: 2px solid transparent;
+  outline: transparent;
+  transition: 0.2s background-color, 0.5s color, 0.4s opacity;
+}
+
+.table__btn:hover {
+  opacity: 0.8;
+}
+
+.table__btn--more:active {
+  background-color: #27037c9a;
+  transition: 0.1s all;
+}
+
+.table__btn--fold {
+  background-color: #ff0266;
+}
+
+.table__btn--fold:active {
+  background-color: #92033ca1;
+}
+
+.table__btn-desc {
+  display: none;
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  font-size: 18px;
+  right: -140px;
+  transform: translate(-50%, -50%);
+}
+
+.table__count-list {
+  display: none;
+}
+
+.table__count-item {
+  color: rgb(119, 113, 113);
+  background-color: #1d1d1d;
+  padding: 3px;
+  border-radius: 3px;
+  border: 1px solid rgb(119, 113, 113);
+}
+
+.table__count-item:first-child {
+  color: #fff;
+}
+
+.table__count-item:not(:last-child) {
+  margin-bottom: 3px;
+}
+
+.table__count {
+  display: block;
+  margin-right: 150px;
+  font-size: 100px;
+  color: #ccc;
+  display: flex;
+  align-items: center;
+  transform: translateY(-20px);
+}
+
+.table__list {
+  display: flex;
+}
+
+.table__item:not(:last-child) {
+  margin-right: 20px;
+}
+
+.card {
+  background-color: #1d1d1d;
+  width: 150px;
+  height: 220px;
+  border-radius: 20px;
+  position: relative;
+  border: 1px solid rgb(119, 113, 113);
+}
+
+.card__name {
+  color: rgb(119, 113, 113);
+  font-size: 65px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.instruction__card {
+  width: 38px;
+  height: 50px;
+  border-radius: 6px;
+  cursor: pointer;
+  position: relative;
+}
+
+.instruction__name {
+  font-size: 25px;
+  transition: 0.4s color;
+}
+
+.fade-left {
+  animation-duration: 0.5s;
+  animation-name: fade-left;
+}
+
+@keyframes fade-left {
+  from {
+    margin-left: -50px;
+    opacity: 0;
+  }
+
+  to {
+    margin-left: 0;
+    opacity: 1;
+  }
+}
+
+.fade {
+  animation-duration: 1s;
+  animation-name: fade;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.end-game-popup {
+  max-width: 500px;
+  width: 100%;
+  height: 300px;
+  background-color: #121212;
+  flex-direction: column;
+  border: 3px solid transparent;
+  align-items: center;
+  justify-content: center;
+}
+
+.end-game-popup__text {
+  font-size: 50px;
+  margin-bottom: 40px;
+}
+
+.end-game-popup__btn {
+  position: absolute;
+  bottom: 20px;
+}
+
+
+.bar {
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  top: 50%;
+  border-radius: 20px 0 0 20px;
+  transform: translate(0, -50%);
+  background-color: rgb(27, 27, 27);
+  border: 1px solid #ccc;
+  border-right: 0 transparent;
+  width: 40px;
+  height: 300px;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  padding: 15px 0;
+  transition: 0.5s transform;
+}
+
+.animate-bar {
+  transform: scale(1.5);
+  right: 10px;
+  top: 30%;
+}
+
+.bar__item {
+  width: 30px;
+  height: 8px;
+  border-radius: 5px 0 0 5px;
+}
+
+.bar__item-anim {
+  animation-duration: 0.5s;
+  animation-name: bar__item-anim;
+}
+
+@keyframes bar__item-anim {
+  from {
+    transform: translateX(30px) translate(0, -50%);
+  }
+
+  to {
+    transform: translateX(0) translate(0, -50%);
+  }
+}
+
+.bar__item:not(:last-child) {
+  margin-bottom: 5px;
+}
+
+.bar__item--win {
+  background-color: #01a29a9f;
+}
+
+.bar__item--lose {
+  background-color: #ff02679a;
+  width: 20px;
+}
+
+.bar__item--draw {
+  background-color: #ccc;
+  width: 13px;
+}
+
+.instruction-popup {
+  padding: 30px 50px;
+  /* text-align: center; */
+  max-width: 650px;
+  width: 100%;  
+  min-height: 450px;
+  font-size: 20px;
+}
+
+
+.instruction-popup__item+.instruction-popup__item {
+  margin-top: 40px;
+}
+
+.instruction-popup__title {
+  color: rgb(255, 118, 0);
+  text-transform: uppercase;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.instruction-popup__win {
+  color: #01a29a9f;
+}
+
+.instruction-popup__lose {
+  color: #b00020;
+}
+
+.instruction-popup__draw {
+  color: #ccc;
+}
+
+.settings-btn {
+  position: relative;
+  background-color: transparent;
+  border: transparent;
+  padding: 0;
+  margin-right: 15px;
+  transition: 0.5s transform ease;
+}
+
+.settings-btn--active {
+  transform: rotate(450deg);
+}
+
+.settings-btn:hover {
+  transform: rotate(90deg);
+}
+
+.settings-popup {
+  width: 500px;
+  height: 300px;
+  padding: 20px 30px;
+  transition: 1s background-color;
+}
+
+.settings-popup__item:not(:last-child) {
+  margin-bottom: 5px;
+}
+
+.settings-popup__title {
+  font-size: 25px;
+  text-align: center;
+  color: #ccc;
+  text-transform: uppercase;
+  margin-bottom: 40px;
+}
+
+.settings-popup__label {
+  display: flex;
+  align-items: center;
+}
+
+.settings-popup__label div {
+  max-width: 20px;
+  width: 100%;
+  height: 20px;
+  background-color: #b00020;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.settings-popup__checkbox:checked + div {
+  background-color: #01a29a9f;
+}
+
+.settings-popup__text {
+  margin-left: 5px;
+  font-size: 20px;
+}
+
+.settings-popup__winrate {
+  color: #01a29a9f;
+  bottom: 20px;
+  position: absolute;
+}
+
+.settings-popup__label--line {
+  cursor: pointer;
+}
+
+.settings-popup__label--line:active div {
+  background-color: #01a29a9f;
+}
+
+.settings-popup__label--line div {
+  width: 20px;
+  background-color: #ccc;
+  height: 5px;
+  margin-top: 5px;
+}
+
+.game__list {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  font-size: 20px;
+  color: rgb(119, 113, 113);
+}
+
+.game__list--active {
+  position: static;
+  font-size: 30px;
+}
+
+.game__item:not(:last-child) {
+  margin-right: 10px;
+}
+
+.settings-popup__color-change {
+  position: absolute;
+  left: 20px;
+  top: 25px;
+}
+
+.label {
+  background-color: #fff;
+  border-radius: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px;
+  position: relative;
+  height: 26px;
+  width: 50px;
+  transform: scale(1.2);
+  /* margin-top: -100px; */
+  transition: 0.5s background-color;
+}
+
+.label .ball {
+  background-color: #111;
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  height: 22px;
+  width: 22px;
+  transform: translateX(0px);
+  transition: transform 0.2s linear, 0.5s background-color;
+}
+
+.checkbox:checked+.label .ball {
+  transform: translateX(24px);
+  background-color: #fff;
+}
+
+.checkbox:checked+.label {
+  background-color: #111;
+}
+
+
+.fa-D {
+  color: #fff;
+}
+
+.fa-W {
+  color: #000;
+}
+
+
+@keyframes change-theme-animate {
+  0% {
+    width: 0;
+    height: 0;
+    /* border-radius: 50%; */
+  }
+
+  40% {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    opacity: 1;
+  }
+
+  100% {
+    /* width: 100%;
+    height: 100%; */
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    opacity: 0;
+  }
+}
+
+
+/* adaptive */
+
+@media(max-width: 1200px) {
+  .table {
+    padding: 0 0 0 20px;
+  }
+
+  .card {
+    width: 135px;
+    height: 200px;
+  }
+
+  .instruction__card {
+    width: 38px;
+    height: 50px;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .table__btns {
+    max-width: 290px;
+  }
+
+  .table__btn {
+    max-width: 135px;
+  }
+
+  .table__count {
+    font-size: 80px;
+    margin-right: 120px;
+  }
+}
+
+@media(max-width: 992px) {
+
+  .card {
+    width: 70px;
+    height: 100px;
+  }
+
+  .card__name {
+    font-size: 45px;
+  }
+
+  .instruction__card {
+    width: 38px;
+    height: 50px;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .instruction__name {
+    font-size: 25px;
+    transition: 0.4s color;
+  }
+
+  .instruction__card:hover::before {
+    display: none;
+  }
+
+  .table__count {
+    margin-right: 70px;
+    font-size: 50px;
+  }
+
+  .clear-bar {
+    display: none;
+  }
+
+  .bar {
+    display: none;
+  }
+}
+
+@media(max-width: 772px) {
+
+  .container {
+    padding: 0 20px;
+  }
+
+  .table {
+    padding: 0;
+  }
+
+  .instruction-popup {
+    width: calc(100% - 40px)
+  }
+
+  .table__count {
+    font-size: 50px;
+    margin-right: 30px;
+  }
+
+  .table__item:not(:last-child) {
+    margin-right: 10px;
+  }
+
+  .instruction-popup {
+    font-size: 16px;
+    padding: 20px;
+  }
+}
+
+@media(max-width: 576px) {
+
+  .table__count-list {
+    display: block;
+    margin: 15px 20px 0 0;
+  }
+
+  .table__item {
+    display: none;
+    /* padding-left: 50px; */
+  }
+
+
+  .card {
+    width: 125px;
+    height: 180px;
+  }
+
+  .card__name {
+    font-size: 65px;
+  }
+
+  .instruction__card {
+    width: 38px;
+    height: 50px;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .instruction__name {
+    font-size: 25px;
+    transition: 0.4s color;
+  }
+
+  .table__inner {
+    justify-content: start;
+  }
+
+  .table__item:last-child {
+    display: block;
+  }
+
+  .table__count {
+    font-size: 70px;
+    margin-right: 20px;
+    margin-left: auto;
+    margin-right: 0;
+  }
+
+  .table__btns {
+    flex-direction: column;
+    max-width: 100%;
+  }
+
+  .table__btn {
+    max-width: 100%;
+  }
+
+  .table__btn:not(:last-child) {
+    margin-bottom: 20px;
+  }
+
+  .popup {
+    max-width: calc(100% - 40px);
+  }
+
+  .end-game-popup__btn {
+    max-width: 250px;
+  }
+
+  .settings-popup {
+    padding: 20px 10px;
+  }
+
+  .settings-popup__item:not(:last-child) {
+    margin-bottom: 10px;
+  }
+
+  .settings-popup__text {
+    font-size: 18px;
+  }
+
+  .bar {
+    display: none;
+    /* transform: rotate(90deg);
+    top: 0;
+    right: 50%;
+    bottom: 0; */
+  }
+}
