@@ -94,8 +94,8 @@ function addCard(tableSelector, cardArray, countSelector, countArrayClassList) {
     let random = Math.floor((Math.random() * 10) + 2);
 
     cardArray.push(random); //пушим значение из карты в массив
-    allCardNum.push(random);
-    duplicateFilter();
+    // allCardNum.push(random);
+    // duplicateFilter();
 
 
     if (!hideDJK.checked) {
@@ -438,10 +438,10 @@ endGamePopupBtn.addEventListener('click', restartGame);
 
 function changeColorFunc() {
   if (!changeColor.checked) {
-    wrapp.classList.remove('white-theme');
+    document.querySelector('body').classList.remove('white-theme');
     localStorage.removeItem('theme');
   } else {
-    wrapp.classList.add('white-theme');
+    document.querySelector('body').classList.add('white-theme');
     localStorage.setItem('theme', true);
   }
 }
