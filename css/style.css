@@ -740,7 +740,12 @@ input[type="checkbox"] {
     margin-bottom: 10px;
   }
 
+  .settings-popup__label {
+    align-items: flex-start;
+  }
+
   .settings-popup__text {
+    margin-top: -3px;
     font-size: 18px;
   }
 

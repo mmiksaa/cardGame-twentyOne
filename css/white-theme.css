@@ -40,3 +40,9 @@
 .white-theme .end-game-popup__btn {
   background-color: #AC66CC;
 }
+
+
+.table__count-item {
+  background-color: #24a19da4;
+  color: black;
+}
