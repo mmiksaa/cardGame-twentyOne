@@ -602,10 +602,16 @@ input[type="checkbox"] {
     overflow: initial;
   }
 
+  
+  .header {
+    margin-bottom: 20px;
+  }
+
   .card {
     width: 70px;
     height: 100px;
   }
+
 
   .card__name {
     font-size: 45px;
@@ -650,10 +656,6 @@ input[type="checkbox"] {
 
   .table {
     padding: 0;
-  }
-
-  .header {
-    margin-bottom: 20px;
   }
   
   .table__count {
