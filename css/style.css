@@ -6,7 +6,9 @@ body {
 
 * {
   -webkit-tap-highlight-color: transparent;
+  outline: transparent; 
 }
+
 
 .wrapp {
   overflow: hidden;
@@ -74,8 +76,20 @@ input[type="checkbox"] {
   align-items: center;
 }
 
-.instruction__card:hover::before {
+.instruction:hover .instruction__card:before {
   display: block;
+}
+
+.instruction:hover .instruction__name {
+  color: rgb(255, 118, 0);
+}
+
+.instruction:focus .instruction__card:before {
+  display: block;
+}
+
+.instruction:focus .instruction__name {
+  color: rgb(255, 118, 0);
 }
 
 .instruction__card::before {
@@ -93,10 +107,6 @@ input[type="checkbox"] {
   /* width: 100%; */
   background-color: #ccc;
   opacity: 0.7;
-}
-
-.instruction__card:hover .instruction__name {
-  color: rgb(255, 118, 0);
 }
 
 
@@ -131,6 +141,10 @@ input[type="checkbox"] {
   border: 2px solid transparent;
   outline: transparent;
   transition: 0.2s background-color, 0.5s color, 0.4s opacity;
+}
+
+.table__btn:focus {
+  box-shadow: 0 0 7px 0 #fff;
 }
 
 .table__btn:hover {
@@ -363,6 +377,10 @@ input[type="checkbox"] {
   margin-top: 40px;
 }
 
+.instruction-popup__item li {
+  margin-bottom: 2px;
+}
+
 .instruction-popup__title {
   color: rgb(255, 118, 0);
   text-transform: uppercase;
@@ -378,15 +396,12 @@ input[type="checkbox"] {
   color: #b00020;
 }
 
-.instruction-popup__draw {
+.instruction-popup__extra {
   color: #ccc;
 }
 
 .settings-btn {
   position: relative;
-  background-color: transparent;
-  border: transparent;
-  padding: 0;
   margin-right: 15px;
   transition: 0.5s transform ease;
 }
@@ -396,6 +411,10 @@ input[type="checkbox"] {
 }
 
 .settings-btn:hover {
+  transform: rotate(90deg);
+}
+
+.settings-btn:focus {
   transform: rotate(90deg);
 }
 
@@ -530,6 +549,31 @@ input[type="checkbox"] {
 
 .fa-W {
   color: #000;
+}
+
+.github {
+  position: absolute;
+  z-index: 2;
+  right: 20px;
+  bottom: 20px;
+  color: #fff;
+  font-size: 20px;
+  display: flex;
+  transition: 0.5s opacity;
+  fill: white;
+}
+
+.github:hover {
+  opacity: 0.6;
+}
+
+.github:focus {
+  opacity: 0.6;
+}
+
+.github__img {
+  width: 30px;
+  margin-right: 5px;
 }
 
 
@@ -679,6 +723,11 @@ input[type="checkbox"] {
     font-size: 16px;
     padding: 20px;
   }
+
+  .instruction-popup__item+.instruction-popup__item {
+    margin-bottom: 20px;
+  }
+
 }
 
 @media(max-width: 576px) {

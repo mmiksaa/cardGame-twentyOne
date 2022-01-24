@@ -61,3 +61,9 @@ select {
   font: inherit;
   letter-spacing: inherit;
 }
+
+button {
+  background-color: transparent;
+  border: transparent;
+  padding: 0;
+}

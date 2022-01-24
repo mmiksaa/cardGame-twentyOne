@@ -15,6 +15,10 @@
   color: #BCCC9A;
 }
 
+.white-theme .table__btn:focus {
+  box-shadow: 0 0 7px 0 #000;
+}
+
 .white-theme .table__btn--more {
   background-color: #AC66CC;
 }
@@ -25,7 +29,6 @@
 
 .white-theme .bar {
   border-color: #C64756;
-  background-color: #96BB7C;
 }
 
 .white-theme .popup {
@@ -45,4 +48,9 @@
 .white-theme .table__count-item {
   background-color: #24a19da4;
   color: black;
+}
+
+.white-theme .github {
+  color: #000;
+  fill: #000;
 }

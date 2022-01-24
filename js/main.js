@@ -52,7 +52,7 @@ changeColorFunc();
 
 hideDJK.checked = false || localStorage.getItem('showDJK');
 
-let x = 0;
+// let x = 0;
 
 
 //начало игры
@@ -91,17 +91,10 @@ winrate.textContent = 'winrate: ' + (Math.floor(gameCount[0] * 100 / gameCount[2
 //функция по добавлению карт
 function addCard(tableSelector, cardArray, countSelector, countArrayClassList) {
   if (cardArray.length < 5 && countSelector.textContent <= 21) {
-    let random = Math.floor((Math.random() * 10) + 2);
-
+    let random = Math.floor((Math.random() * 9) + 2);
     cardArray.push(random); //пушим значение из карты в массив
-    // allCardNum.push(random);
-    // duplicateFilter();
-
-
+    
     if (!hideDJK.checked) {
-      if (random == 11) {
-        random = 'T';
-      }
       if (random == 2) {
         random = 'J';
       } else if (random == 3) {
@@ -113,17 +106,17 @@ function addCard(tableSelector, cardArray, countSelector, countArrayClassList) {
 
     const tableItem = document.createElement('li');
     tableItem.classList.add('table__item', 'fade-left');
-    if (random == 'T') {
-      tableItem.innerHTML = `
-      <div class ="card" style = "border: 1px solid rgb(255, 118, 0);" >
-        <div div class = "card__name">${random}</div>
-      </div>`;
-    }else {
+    // if (random == 'T') {
+    //   tableItem.innerHTML = `
+    //   <div class ="card" style = "border: 1px solid rgb(255, 118, 0);" >
+    //     <div div class = "card__name">${random}</div>
+    //   </div>`;
+    // }else {
       tableItem.innerHTML = `
       <div class="card">
         <div class="card__name">${random}</div>
       </div>`;
-    }
+    // }
 
     tableSelector.append(tableItem);
 
@@ -132,23 +125,6 @@ function addCard(tableSelector, cardArray, countSelector, countArrayClassList) {
     adaptiveCountArray(cardArray, countArrayClassList);
 
   }
-}
-
-function duplicateFilter() {
-
-  allCardNum.filter(function (item, pos) {
-    if (allCardNum.indexOf(item) != pos) {
-      x++;
-      console.log(item);
-      console.log('allCardNum: ' + allCardNum);
-      console.log(`${x}..`);
-    }
-
-    if (x >= 3) {
-      x = [];
-      console.log('dublicate');
-    }
-  });
 }
 
 hideDJK.addEventListener('change', () => {
@@ -178,7 +154,6 @@ function addArray(array, countSelector) {
 
   if (tableCountYou.textContent > 21 && !flag) {
     flag = true;
-    btnFold.disabled = false;
     endGame('lose', '#b00020');
   }
 
@@ -196,7 +171,8 @@ function loseWinRival() {
   btnFold.disabled = true;
 
 
-  if (+tableCountRival.textContent < 21 && +tableCountRival.textContent < +tableCountYou.textContent) {
+  if (+tableCountRival.textContent < 21 && +tableCountRival.textContent < +tableCountYou.textContent &&
+    cardCounterRival.length < 5) {
     if (!firstTime) {
       firstTime = true;
       addCard(tableListRival, cardCounterRival, tableCountRival, 'rival');
@@ -244,7 +220,7 @@ function endGame(text, color) {
     bar.classList.add('animate-bar');
   }, 500);
 
-  let x = 0;
+  allCardNum = [];
 
   localBar(text);
   barCounter.push(text);
