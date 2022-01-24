@@ -560,6 +560,7 @@ input[type="checkbox"] {
   color: #fff;
   font-size: 20px;
   display: flex;
+  align-items: center;
   transition: 0.5s opacity;
   fill: white;
 }
