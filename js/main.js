@@ -172,7 +172,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
     
     if (+tableCountRival.textContent+1 < 21 && +tableCountRival.textContent < +tableCountYou.textContent &&
       cardCounterRival.length < 4) {
-        console.log(cardCounterRival.length);
       if (!firstTime) {
         firstTime = true;
         addCard(tableListRival, cardCounterRival, tableCountRival, 'rival');
