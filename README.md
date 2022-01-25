@@ -12,7 +12,7 @@ ___
 <br>
 /
 <br>
-**during the writing of the project, It may contain bugs.**
+**I didn't know much at the time of writing the project. It may contain bugs.**
 ___
 <br>
 
