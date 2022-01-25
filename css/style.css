@@ -681,7 +681,7 @@ input[type="checkbox"] {
     transition: 0.4s color;
   }
 
-  .instruction__card:hover::before {
+  .instruction:hover .instruction__card:before {
     display: none;
   }
 

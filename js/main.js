@@ -171,7 +171,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     
     if (+tableCountRival.textContent+1 < 21 && +tableCountRival.textContent < +tableCountYou.textContent &&
-      cardCounterRival.length < 4) {
+      cardCounterRival.length < 5) {
       if (!firstTime) {
         firstTime = true;
         addCard(tableListRival, cardCounterRival, tableCountRival, 'rival');
@@ -185,7 +185,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     }
     
     
-    if (+tableCountRival.textContent+2 > 21 && !flag) {
+    if (+tableCountRival.textContent > 21 && !flag) {
       flag = true;
       endGame('win', '#01a29a9f');
     }
@@ -202,9 +202,10 @@ document.addEventListener("DOMContentLoaded", function (event) {
       endGame('lose', '#b00020');
     }
     
-    if (+tableCountRival.textContent < 21 && +tableCountYou.textContent > +tableCountRival.textContent && 
+    if (+tableCountRival.textContent+1 < 21 && +tableCountYou.textContent > +tableCountRival.textContent && 
       cardCounterRival.length == 5) {
       flag = true;
+      console.log('win2');
       endGame('win', '#01a29a9f');
     }
   }
