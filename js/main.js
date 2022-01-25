@@ -169,7 +169,13 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     btnMore.disabled = true;
     btnFold.disabled = true;
-
+    
+    
+    //если число диллера равно твоему ччислу и флаг не неправда
+    if (+tableCountRival.textContent == +tableCountYou.textContent && !flag) {
+      flag = true;
+      endGame('draw', '#ccc');
+    }
     
     if (+tableCountRival.textContent < 21 && +tableCountRival.textContent < +tableCountYou.textContent &&
       cardCounterRival.length < 5) {
@@ -184,29 +190,21 @@ document.addEventListener("DOMContentLoaded", function (event) {
         }, 1000);
       }
     }
-    
-    
+
     if (+tableCountRival.textContent > 21 && !flag) {
       flag = true;
       endGame('win', '#01a29a9f');
     }
-    
-    //если число диллера равно твоему ччислу и флаг не неправда
-    if (+tableCountRival.textContent == +tableCountYou.textContent && !flag) {
-      flag = true;
-      endGame('draw', '#ccc');
-    }
-    
+
     //если число диллера меньше/равно числу 21 и твое число меньше числа диллера и флаг не неправда
     if (+tableCountYou.textContent < +tableCountRival.textContent && !flag) {
       flag = true;
       endGame('lose', '#b00020');
     }
-    
-    if (+tableCountRival.textContent < 21 && +tableCountYou.textContent > +tableCountRival.textContent && 
+
+    if (+tableCountRival.textContent < 21 && +tableCountYou.textContent > +tableCountRival.textContent &&
       cardCounterRival.length == 5) {
       flag = true;
-      console.log('win2');
       endGame('win', '#01a29a9f');
     }
   }

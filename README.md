@@ -3,6 +3,10 @@
 ## link to the game: [twenty one](https://mmiksaa.github.io/cardGame-twentyOne/)
 
 
+**во время написания проекта я многое не знал. Это моя первая работа.**
+/
+**during the writing of the project, I did not know much. This is my first job.**
+
 ### finished writing the game: 25/01/2022
 ___
 <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->

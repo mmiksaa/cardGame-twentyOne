@@ -54,7 +54,6 @@ input[type="checkbox"] {
   border-radius: 20px;
   background-color: #1d1d1d;
   color: rgb(161, 150, 150);
-  overflow-y: scroll;
   max-height: 80%;
 }
 
@@ -580,6 +579,9 @@ input[type="checkbox"] {
   margin-right: 5px;
 }
 
+.github__adaptive {
+  display: none;
+}
 
 @keyframes change-theme-animate {
   0% {
@@ -657,11 +659,13 @@ input[type="checkbox"] {
     overflow: initial;
   }
 
-
   .header {
     margin-bottom: 20px;
   }
-  
+
+  .popup {
+    overflow-y: scroll;
+  }
 
   .card {
     width: 70px;
