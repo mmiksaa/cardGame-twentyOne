@@ -170,7 +170,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     btnFold.disabled = true;
 
     
-    if (+tableCountRival.textContent+1 < 21 && +tableCountRival.textContent < +tableCountYou.textContent &&
+    if (+tableCountRival.textContent < 21 && +tableCountRival.textContent < +tableCountYou.textContent &&
       cardCounterRival.length < 5) {
       if (!firstTime) {
         firstTime = true;
@@ -202,7 +202,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
       endGame('lose', '#b00020');
     }
     
-    if (+tableCountRival.textContent+1 < 21 && +tableCountYou.textContent > +tableCountRival.textContent && 
+    if (+tableCountRival.textContent < 21 && +tableCountYou.textContent > +tableCountRival.textContent && 
       cardCounterRival.length == 5) {
       flag = true;
       console.log('win2');
