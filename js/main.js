@@ -169,9 +169,10 @@ document.addEventListener("DOMContentLoaded", function (event) {
     btnMore.disabled = true;
     btnFold.disabled = true;
 
-
-    if (+tableCountRival.textContent < 21 && +tableCountRival.textContent < +tableCountYou.textContent &&
-      cardCounterRival.length < 5) {
+    
+    if (+tableCountRival.textContent+1 < 21 && +tableCountRival.textContent < +tableCountYou.textContent &&
+      cardCounterRival.length < 4) {
+        console.log(cardCounterRival.length);
       if (!firstTime) {
         firstTime = true;
         addCard(tableListRival, cardCounterRival, tableCountRival, 'rival');
@@ -182,24 +183,38 @@ document.addEventListener("DOMContentLoaded", function (event) {
           loseWinRival();
         }, 1000);
       }
-
     }
-
-    if (+tableCountRival.textContent > 21 && !flag) {
+    
+    
+    if (+tableCountRival.textContent+2 > 21 && !flag) {
       flag = true;
       endGame('win', '#01a29a9f');
     }
-
+    
     //если число диллера равно твоему ччислу и флаг не неправда
     if (+tableCountRival.textContent == +tableCountYou.textContent && !flag) {
       flag = true;
       endGame('draw', '#ccc');
     }
-
+    
     //если число диллера меньше/равно числу 21 и твое число меньше числа диллера и флаг не неправда
     if (+tableCountYou.textContent < +tableCountRival.textContent && !flag) {
       flag = true;
       endGame('lose', '#b00020');
+    }
+    
+    if (+tableCountRival.textContent < 21 && +tableCountYou.textContent > +tableCountRival.textContent && 
+      cardCounterRival.length == 5) {
+      flag = true;
+      endGame('win', '#01a29a9f');
+    }
+  }
+
+  function winrateCounter() {
+    winrate.textContent = 'winrate: ' + (Math.floor(gameCount[0] * 100 / gameCount[2]) || 0) + '%';
+
+    if (winrate.textContent.replace(/[^0-9]/g, "") > 100 || winrate.textContent == 'winrate: Infinity%') {
+      winrate.textContent = 'winrate: 100%';
     }
   }
 
@@ -250,7 +265,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     localStorage.setItem('gameCount', JSON.stringify(gameCount));
 
-    winrate.textContent = 'winrate: ' + (Math.floor(gameCount[0] * 100 / gameCount[2]) || 0) + '%';
+    winrateCounter();
 
   }
 
@@ -379,6 +394,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
   clearCoutBar.addEventListener('click', () => {
     localStorage.removeItem("gameCount");
     gameCount = [0, 0, 0];
+    winrateCounter();
     gameCount.forEach((e, i) => {
       gameItem[i].textContent = e;
       gameItem[i].style.color = 'rgb(119, 113, 113)';
