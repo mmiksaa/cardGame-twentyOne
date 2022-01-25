@@ -762,7 +762,7 @@ input[type="checkbox"] {
 @media(max-width: 576px) {
 
   body {
-    position: static;
+    /* position: static; */
     height: 100vh;
   }
 
@@ -884,5 +884,18 @@ input[type="checkbox"] {
 
   .game__list--active {
     font-size: 20px;
+  }
+
+  .settings-popup__text {
+    font-size: 15px;
+  }
+
+  .settings-popup__color-change {
+    left: 5px;
+
+  }
+
+  .label {
+    transform: scale(0.7);
   }
 }
