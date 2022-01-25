@@ -2,6 +2,7 @@ body {
   font-family: 'Readex Pro', helvetica;
   overflow: hidden;
   background-color: rgb(12, 12, 12);
+  position: relative;
 }
 
 * {
@@ -14,7 +15,7 @@ body {
   overflow: hidden;
   position: relative;
   transition: 0.5s background-color;
-  height: 100vh;
+  height: 100%;
 }
 
 .wrapp-popup::after {
@@ -53,7 +54,8 @@ input[type="checkbox"] {
   border-radius: 20px;
   background-color: #1d1d1d;
   color: rgb(161, 150, 150);
-
+  overflow-y: scroll;
+  max-height: 80%;
 }
 
 .popup__close {
@@ -623,6 +625,7 @@ input[type="checkbox"] {
 
   .table__btns {
     max-width: 290px;
+    width: 100%;
   }
 
   .table__btn {
@@ -639,11 +642,12 @@ input[type="checkbox"] {
 
   .table {
     height: calc(100% - 90px);
+    padding-bottom: 50px;
   }
 
-  .table {
+  /* .table {
     height: calc(100vh - 180px);
-  }
+  } */
 
   body {
     overflow: initial;
@@ -657,15 +661,35 @@ input[type="checkbox"] {
   .header {
     margin-bottom: 20px;
   }
+  
 
   .card {
     width: 70px;
     height: 100px;
   }
 
-
   .card__name {
     font-size: 45px;
+  }
+
+  .table__adaptive {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 30px;
+  }
+
+  .github {
+    display: none;
+  }
+
+  .github__adaptive {
+    position: static;
+    display: flex;
+  }
+
+  .instruction-popup {
+    min-height: 0;
   }
 
   .instruction__card {
@@ -697,6 +721,7 @@ input[type="checkbox"] {
   .bar {
     display: none;
   }
+
 }
 
 @media(max-width: 772px) {
@@ -719,10 +744,6 @@ input[type="checkbox"] {
     margin-right: 10px;
   }
 
-  .table__btns {
-    padding-bottom: 20px;
-  }
-
   .instruction-popup {
     width: calc(100% - 40px);
   }
@@ -740,6 +761,11 @@ input[type="checkbox"] {
 
 @media(max-width: 576px) {
 
+  body {
+    position: static;
+    height: 100vh;
+  }
+
   .table__count-list {
     display: block;
     margin: 15px 20px 0 0;
@@ -756,6 +782,16 @@ input[type="checkbox"] {
 
   .card__name {
     font-size: 65px;
+  }
+
+  .table__adaptive {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+  }
+
+  .github__adaptive {
+    margin-top: 30px;
   }
 
   .instruction__card {
@@ -834,12 +870,19 @@ input[type="checkbox"] {
   .bar {
     display: none;
   }
+}
 
-  .github {
-    position: static;
-    z-index: 2;
-    display: flex;
-    justify-content: center;
-    padding-bottom: 40px;
+@media(max-width: 320px) {
+  .table__count {
+    font-size: 50px;
+  }
+
+  .table__count-list {
+    display: block;
+    margin: 15px 10px 0 0;
+  }
+
+  .game__list--active {
+    font-size: 20px;
   }
 }

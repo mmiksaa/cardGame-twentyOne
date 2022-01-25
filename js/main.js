@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     tableCountRival = document.querySelector('.table__count--rival'),
     wrapp = document.querySelector('.wrapp'),
     bar = document.querySelector('.bar'),
+    body = document.querySelector('body'),
     winrate = document.querySelector('.settings-popup__winrate'),
 
     endGamePopup = document.querySelector('.end-game-popup'),
@@ -221,7 +222,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
   function endGame(text, color) {
     setTimeout(() => {
-      wrapp.classList.add('wrapp-popup');
+      body.classList.add('wrapp-popup');
       table.style.cssText = 'filter: blur(8px);';
 
       endGamePopup.style.display = 'flex';
@@ -246,8 +247,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
       }
     });
 
-    wrapp.addEventListener('click', (e) => {
-      if (e.target === wrapp && endGamePopup.style.display == 'flex') {
+    body.addEventListener('click', (e) => {
+      if (e.target === body && endGamePopup.style.display == 'flex') {
         restartGame();
       }
     });
@@ -294,7 +295,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     tableCountRival.textContent = '';
     tableCountYou.textContent = '';
 
-    wrapp.classList.remove('wrapp-popup');
+    body.classList.remove('wrapp-popup');
     bar.classList.remove('animate-bar');
     table.style.cssText = '';
 
@@ -327,12 +328,12 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
   function showRules() {
     if (instructionPopup.style.display == 'block') {
-      wrapp.classList.remove('wrapp-popup');
+      body.classList.remove('wrapp-popup');
       table.style.cssText = '';
       instructionPopup.style.display = '';
       instructionPopup.classList.remove('fade');
     } else {
-      wrapp.classList.add('wrapp-popup');
+      body.classList.add('wrapp-popup');
       table.style.cssText = 'filter: blur(8px);';
       instructionPopup.style.display = 'block';
       instructionPopup.classList.add('fade');
@@ -344,8 +345,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
       }
     });
 
-    wrapp.addEventListener('click', (e) => {
-      if (e.target === wrapp && instructionPopup.style.display == 'block') {
+    body.addEventListener('click', (e) => {
+      if (e.target === body && instructionPopup.style.display == 'block') {
         showRules();
       }
     });
@@ -353,13 +354,13 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
   function showSettings() {
     if (settingsPopup.style.display == 'block') {
-      wrapp.classList.remove('wrapp-popup');
+      body.classList.remove('wrapp-popup');
       table.style.cssText = '';
       settingsPopup.style.display = '';
       settingsPopup.classList.remove('fade');
       settingsBtn.classList.remove('settings-btn--active');
     } else {
-      wrapp.classList.add('wrapp-popup');
+      body.classList.add('wrapp-popup');
       table.style.cssText = 'filter: blur(8px);';
       settingsPopup.style.display = 'block';
       settingsPopup.classList.add('fade');
@@ -377,8 +378,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
       }
     });
 
-    wrapp.addEventListener('click', (e) => {
-      if (e.target === wrapp && settingsPopup.style.display == 'block') {
+    body.addEventListener('click', (e) => {
+      if (e.target === body && settingsPopup.style.display == 'block') {
         showSettings();
       }
     });
