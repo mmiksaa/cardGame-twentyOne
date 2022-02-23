@@ -6,6 +6,9 @@
 
 <br>
 
+js   - 441 lines of code
+html - 181 lines of code
+css  - 905 + 56(white theme) lines of code
 ___
 
 **во время написания проекта я многое не знал. В нем могут присутсовать баги.**
