@@ -7,7 +7,9 @@
 <br>
 
 js   - 441 lines of code
+
 html - 181 lines of code
+
 css  - 905 + 56(white theme) lines of code
 ___
 
