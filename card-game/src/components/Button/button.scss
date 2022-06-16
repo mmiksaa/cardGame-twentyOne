@@ -1,0 +1,38 @@
+.btn {
+  max-width: 150px;
+  width: 100%;
+  height: 40px;
+  border-radius: 20px;
+  border: none;
+  background-color: #3700b3;
+  color: #fff;
+  border: 2px solid transparent;
+  outline: transparent;
+  transition: 0.2s background-color, 0.5s color, 0.4s opacity;
+
+  &:focus {
+    box-shadow: 0 0 7px 0 #fff;
+  }
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:disabled {
+    opacity: 0.3;
+    cursor: default;
+  }
+}
+
+.table__btn--fold {
+  background-color: #ff0266;
+
+  &:active {
+    background-color: #92033ca1;
+  }
+}
+
+.table__btn--more:active {
+  background-color: #27037c9a;
+  transition: 0.1s all;
+}

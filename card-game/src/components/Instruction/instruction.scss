@@ -1,0 +1,131 @@
+.instruction {
+  &-popup {
+    padding: 30px 50px;
+    max-width: 650px;
+    width: 100%;
+    min-height: 450px;
+    font-size: 20px;
+  }
+
+  &__card {
+    width: 38px;
+    height: 50px;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+  }
+
+  &__name {
+    font-size: 25px;
+    transition: 0.4s color;
+  }
+
+  &:hover &__name {
+    color: rgb(255, 118, 0);
+  }
+
+  &:focus &__card:before {
+    display: block;
+  }
+
+  &:focus &__name {
+    color: rgb(255, 118, 0);
+  }
+
+  &-popup__item + &-popup__item {
+    margin-top: 40px;
+  }
+
+  &-popup__item li {
+    margin-bottom: 2px;
+  }
+
+  &-popup__title {
+    color: rgb(255, 118, 0);
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  &-popup__win {
+    color: #01a29a9f;
+  }
+
+  &-popup__lose {
+    color: #b00020;
+  }
+
+  &-popup__extra {
+    color: #ccc;
+  }
+}
+
+
+@media(max-width: 1200px) {
+
+  .instruction__card {
+    width: 38px;
+    height: 50px;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+  }
+}
+
+@media(max-width: 992px) {
+
+  .instruction-popup {
+    min-height: 0;
+  }
+
+  .instruction__card {
+    width: 38px;
+    height: 50px;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .instruction__name {
+    font-size: 25px;
+    transition: 0.4s color;
+  }
+
+  .instruction:hover .instruction__card:before {
+    display: none;
+  }
+
+}
+
+@media(max-width: 772px) {
+
+  .instruction-popup {
+    width: calc(100% - 40px);
+  }
+
+  .instruction-popup {
+    font-size: 16px;
+    padding: 20px;
+  }
+
+  .instruction-popup__item+.instruction-popup__item {
+    margin-top: 20px;
+  }
+
+}
+
+@media(max-width: 576px) {
+
+  .instruction__card {
+    width: 38px;
+    height: 50px;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .instruction__name {
+    font-size: 25px;
+    transition: 0.4s color;
+  }
+}
