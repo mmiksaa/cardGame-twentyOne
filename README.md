@@ -1,5 +1,5 @@
 # TWENTY ONE | CARD GAME
-[project link](https://mmiksaa.github.io/cardGame-twentyOne/)
+[project link](https://react-card-game.vercel.app/)
 ======
 
 ### STACK:
