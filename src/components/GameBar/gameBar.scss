@@ -1,0 +1,70 @@
+.game-bar {
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  top: 50%;
+  border-radius: 20px 0 0 20px;
+  transform: translate(0, -50%);
+  background-color: rgb(27, 27, 27);
+  border: 1px solid #ccc;
+  border-right: 0 transparent;
+  width: 40px;
+  height: 300px;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  padding: 15px 0;
+  transition: 0.5s transform;
+
+  &-animate {
+    transform: scale(1.4) translate(-6px, -35%);
+  }
+
+  &__item {
+    width: 30px;
+    height: 8px;
+    border-radius: 5px 0 0 5px;
+    animation-duration: 0.5s;
+      animation-name: bar__item-anim;
+
+    &:not(:last-child) {
+      margin-bottom: 5px;
+    }
+
+    &--win {
+      background-color: #01a29a9f;
+    }
+
+    &--lose {
+      background-color: #ff02679a;
+      width: 20px;
+    }
+
+    &--draw {
+      background-color: #ccc;
+      width: 13px;
+    }
+  }
+}
+
+@keyframes bar__item-anim {
+  from {
+    transform: translateX(30px);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@media(max-width: 992px) {
+
+  .clear-bar {
+    display: none;
+  }
+
+  .game-bar {
+    display: none;
+  }
+
+}

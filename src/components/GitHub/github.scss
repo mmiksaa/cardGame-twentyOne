@@ -1,0 +1,46 @@
+.github {
+  position: absolute;
+  z-index: 2;
+  right: 20px;
+  bottom: 20px;
+  color: #fff;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  transition: 0.5s opacity;
+  fill: white;
+
+  &:hover {
+    opacity: 0.6;
+  }
+
+  &:focus {
+    opacity: 0.6;
+  }
+
+  &__img {
+    width: 30px;
+    margin-right: 5px;
+  }
+
+  &__adaptive {
+    display: none;
+  }
+}
+
+@media (max-width: 992px) {
+  .github {
+    display: none;
+
+    &__adaptive {
+      position: static;
+      display: flex;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .github__adaptive {
+    margin-top: 30px;
+  }
+}

@@ -1,0 +1,19 @@
+.btn {
+  max-width: 150px;
+  width: 100%;
+  height: 40px;
+  border-radius: 20px;
+  border: none;
+  background-color: #3700b3;
+  color: #fff;
+  border: 2px solid transparent;
+  transition: 0.2s background-color, 0.5s color, 0.4s opacity;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:focus-visible {
+    box-shadow: 0 0 7px 0 #fff;
+  }
+}

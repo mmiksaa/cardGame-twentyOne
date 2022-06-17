@@ -1,0 +1,133 @@
+$win: #51b531;
+$lose: #ffb3b3;
+$soap: #e6f5ff;
+
+.theme-white {
+  background-color: #fff;
+
+  & .card {
+    background-color: #2d7fb3;
+    border: 1px solid transparent;
+  }
+
+  & .card__name {
+    color: #e6f5ff;
+  }
+
+  & .card--djoker {
+    border-color: #ffb3b3;
+
+    .card__name {
+      color: #ffb3b3;
+    }
+  }
+
+  & .table__btn:focus {
+    box-shadow: 0 0 7px 0 #000;
+  }
+
+  & .settings-popup__label div {
+    background-color: $lose;
+  }
+
+  & .settings-popup__checkbox:checked + div {
+    background-color: $win;
+  }
+
+  & .settings-popup__label--line div {
+    background-color: #ccc;
+  }
+
+  & .table__btn--more {
+    background-color: #ac66cc;
+  }
+
+  & .table__btn--fold {
+    background-color: #ff4d4d;
+  }
+
+  & .game-bar {
+    background-color: $soap;
+  }
+
+  & .popup {
+    background-color: #fff;
+    color: #000;
+  }
+
+  & .end-game-popup {
+    background-color: $soap;
+  }
+
+  & .win {
+    border-color: $win;
+    color: $win;
+    box-shadow: 0px 0px 20px 0px $win;
+  }
+
+  & .lose {
+    border-color: $lose;
+    color: $lose;
+    box-shadow: 0px 0px 20px 0px $lose;
+  }
+
+  & .draw {
+    color: #ccc;
+  }
+
+  & .counter__item--win {
+    color: $win;
+  }
+
+  & .counter__item--lose {
+    color: $lose;
+  }
+
+  & .table__count--lose {
+    color: $lose;
+  }
+
+  & .table__count--lose {
+    color: $lose;
+  }
+
+  & .table__count--gold {
+    color: rgba(255, 118, 0, 0.5);
+  }
+
+  & .end-game-popup__btn {
+    background-color: #ac66cc;
+  }
+
+  & .table__count-item {
+    background-color: #24a19da4;
+    color: black;
+  }
+
+  & .github {
+    color: #000;
+    fill: #000;
+  }
+
+  & .game-bar__item--lose {
+    background-color: $lose;
+  }
+
+  & .game-bar__item--win {
+    background-color: #b3eba1;
+  }
+
+  & .instruction-popup__win {
+    color: $win;
+  }
+
+  & .instruction-popup__lose {
+    color: $lose;
+  }
+
+  & .instruction-popup__title {
+    color: rgba(255, 118, 0, 0.5);
+  }
+}
+
+/* $lose */
