@@ -130,7 +130,7 @@ const SettingsPopup = ({ showPopup, onShowPopup, popupRef, counterItems }) => {
       </div>
 
       <span className='settings-popup__winrate'>
-        winnrate: {Math.floor((gameCounter[0] / (gameCounter[0] + gameCounter[2])) * 100) || 0} %
+        winrate: {Math.floor((gameCounter[0] / (gameCounter[0] + gameCounter[2])) * 100) || 0} %
       </span>
     </div>
   );

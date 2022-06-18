@@ -125,6 +125,7 @@ input[type="checkbox"] {
 
   body {
     overflow: initial;
+    height: 100%;
   }
 
   .wrapp {
@@ -132,7 +133,7 @@ input[type="checkbox"] {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 100vh;
+    min-height: 100vh;
   }
 
   .container {
@@ -184,12 +185,6 @@ input[type="checkbox"] {
 }
 
 @media(max-width: 576px) {
-
-  body {
-    /* position: static; */
-    height: 100vh;
-  }
-
   .card {
     width: 125px;
     height: 180px;
