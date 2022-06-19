@@ -53,12 +53,12 @@ function Table() {
 
     const giveMoreCond = giveDealerCart || you === 21 || (you <= 21 && currentCards.you.length === 5);
 
-    function setСondition(condition, endGame) {
+    const setСondition = (condition, endGame) => {
       if (condition && !flag) {
         flag = true;
         setTimeout(() => dispatch(setEndGame(endGame)), 500);
       }
-    }
+    };
 
     setСondition(winCond, 'win');
     setСondition(loseCond, 'lose');
@@ -68,7 +68,7 @@ function Table() {
     // eslint-disable-next-line
   }, [currentCards, giveDealerCart]);
 
-  function createCard(key) {
+  const createCard = (key) => {
     const totalKey = 'total' + key[0].toUpperCase() + key.slice(1);
     if (currentCards[key].length < 5 && currentCards[totalKey] < 21) {
       const obj = { ...currentCards };
@@ -84,7 +84,7 @@ function Table() {
       setDisableBtnMore(obj.totalDealer > 21 || obj.totalYou >= 21 || obj.you.length === 5);
       return { random, obj };
     }
-  }
+  };
 
   const giveCardToDealer = (withTimeOut = true) => {
     if (withTimeOut) {
@@ -105,28 +105,26 @@ function Table() {
   };
 
   const createCardBlock = (key) => {
-    return (
-      currentCards[key] &&
-      currentCards[key].map((item, index) => {
-        return (
-          <li d={index} key={index} className='table__item'>
-            <CardBlock hideJDK={hideJDK}>{item}</CardBlock>
-          </li>
-        );
-      })
-    );
+    return currentCards[key].map((item, index) => (
+      <li d={index} key={index} className='table__item'>
+        <CardBlock hideJDK={hideJDK}>{item}</CardBlock>
+      </li>
+    ));
   };
 
   const createMiniCard = (key) => {
+    const arr = currentCards[key] ? [...currentCards[key]].reverse() : false;
     return (
-      currentCards[key] &&
-      currentCards[key].map((item, index) => (
+      arr &&
+      arr.map((item, index) => (
         <li key={index} className='table__count-item'>
           {item}
         </li>
       ))
     );
   };
+
+  console.log(currentCards.you, 'non');
 
   return (
     <div className={classNames('table', { 'table--blur': endGame || tableBlur })}>

@@ -75,6 +75,7 @@ const SettingsPopup = ({ showPopup, onShowPopup, popupRef, counterItems }) => {
             <p className='settings-popup__text'>hide J, D, K</p>
           </label>
         </li>
+        
 
         <li className='settings-popup__item'>
           <label className='settings-popup__label'>
