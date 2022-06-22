@@ -9,7 +9,7 @@ import './table.scss';
 function Table() {
   const dispatch = useDispatch();
   const { allCards, endGame, restartGame, tableBlur } = useSelector((state) => state.cards);
-  const { hideJDK, hideHUD } = useSelector((state) => state.settings);
+  const hideJDK = useSelector((state) => state.settings.hideJDK);
   const [currentCards, setCurrentCards] = useState({
     dealer: [],
     you: [],
@@ -170,7 +170,7 @@ function Table() {
           </Button>
         </div>
 
-        <Github className='github github__adaptive' hideHUD={hideHUD} />
+        <Github className='github github__adaptive' />
       </div>
     </div>
   );
