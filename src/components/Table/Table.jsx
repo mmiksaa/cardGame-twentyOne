@@ -9,7 +9,7 @@ import './table.scss';
 function Table() {
   const dispatch = useDispatch();
   const { allCards, endGame, restartGame, tableBlur } = useSelector((state) => state.cards);
-  const hideJDK = useSelector((state) => state.settings.hideJDK);
+  const { hideJDK, hideHUD } = useSelector((state) => state.settings);
   const [currentCards, setCurrentCards] = useState({
     dealer: [],
     you: [],
@@ -47,7 +47,11 @@ function Table() {
     const winCond =
       dealer > 21 || (dealer < you && currentCards.dealer.length === 5) || (dealer === 20 && you === 21);
 
-    const loseCond = you > 21 || (you < dealer && giveDealerCart);
+    const loseCond =
+      you > 21 ||
+      (you < dealer && giveDealerCart) ||
+      (you === 20 && dealer === 21) ||
+      (you <= 21 && you < dealer && currentCards.you.length === 5);
 
     const drawCond = giveDealerCart && dealer === you && (dealer >= 16 || currentCards.dealer.length === 5);
 
@@ -124,8 +128,6 @@ function Table() {
     );
   };
 
-  console.log(currentCards.you, 'non');
-
   return (
     <div className={classNames('table', { 'table--blur': endGame || tableBlur })}>
       <div className='table__inner'>
@@ -168,7 +170,7 @@ function Table() {
           </Button>
         </div>
 
-        <Github className='github github__adaptive' />
+        <Github className='github github__adaptive' hideHUD={hideHUD} />
       </div>
     </div>
   );

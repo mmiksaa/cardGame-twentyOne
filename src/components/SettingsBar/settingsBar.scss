@@ -176,6 +176,12 @@
   }
 }
 
+@media (max-width: 992px) {
+  .clear-bar {
+    display: none;
+  }
+}
+
 @media (max-width: 576px) {
   .settings-popup {
     padding: 20px 10px;

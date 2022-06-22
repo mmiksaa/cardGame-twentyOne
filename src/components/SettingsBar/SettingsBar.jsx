@@ -75,7 +75,6 @@ const SettingsPopup = ({ showPopup, onShowPopup, popupRef, counterItems }) => {
             <p className='settings-popup__text'>hide J, D, K</p>
           </label>
         </li>
-        
 
         <li className='settings-popup__item'>
           <label className='settings-popup__label'>
@@ -90,10 +89,10 @@ const SettingsPopup = ({ showPopup, onShowPopup, popupRef, counterItems }) => {
           </label>
         </li>
 
-        <li className='settings-popup__item'>
+        <li className='settings-popup__item clear-bar'>
           <button
             onClick={() => dispatch(clearBarStorage())}
-            className='settings-popup__label settings-popup__label--line clear-bar'>
+            className='settings-popup__label settings-popup__label--line'>
             <div></div>
             <p className='settings-popup__text settings-popup__text--line'>clear the game story</p>
           </button>
