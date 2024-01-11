@@ -1,13 +1,11 @@
 # TWENTY ONE | CARD GAME
-[project link](https://react-card-game.vercel.app/)
-======
 
-### STACK:
+# [project link](https://react-card-game.vercel.app/)
 
+### STACK 🧷
 
 <div style="display: flex; align-items: center;">  
- <img src="https://sass-lang.com/assets/img/styleguide/seal-color-aef0354c.png" style="margin-right: 10px" width="20" alt="accessibility text"> 
- SCSS
+ <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/2048px-Typescript_logo_2020.svg.png" style="margin-right: 10px" width="20" alt="accessibility text"> TYPESCRIPT
 </div>
 
 <div style="display: flex; align-items: center;">  

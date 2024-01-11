@@ -1,16 +1,19 @@
 import { useEffect } from 'react';
-import ReactDOM from 'react-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { nanoid } from 'nanoid';
 import classNames from 'classnames';
 
 import { setBarStorage } from '../../redux/slices/cardsSlice';
+import { RootState, useAppDispatch } from '../../redux/store';
 import './gameBar.scss';
 
-function GameBar({ hideHUD }) {
-  const dispatch = useDispatch();
-  const barStorage = useSelector((state) => state.cards.barStorage);
-  const endGame = useSelector((state) => state.cards.endGame);
+type GameBar = {
+  hideHUD: boolean;
+};
+const GameBar: React.FC<GameBar> = ({ hideHUD }) => {
+  const dispatch = useAppDispatch();
+  const barStorage = useSelector((state: RootState) => state.cards.barStorage);
+  const endGame = useSelector((state: RootState) => state.cards.endGame);
 
   useEffect(() => {
     if (endGame) {
@@ -28,12 +31,8 @@ function GameBar({ hideHUD }) {
   };
 
   return (
-    <Portal>
-      <ul className={classNames('game-bar', { 'game-bar-animate': endGame, hideHUD })}>{createItems()}</ul>
-    </Portal>
+    <ul className={classNames('game-bar', { 'game-bar-animate': endGame, hideHUD })}>{createItems()}</ul>
   );
-}
-
-const Portal = ({ children }) => ReactDOM.createPortal(children, document.body);
+};
 
 export default GameBar;

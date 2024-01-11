@@ -1,16 +1,25 @@
-import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-import settingsImg from '../../assets/img/settings.svg';
 import { toggleGameCounter, changeTheme, toggleJDK, toggleHideHud } from '../../redux/slices/settingsSlice';
 import { clearBarStorage, clearGameCounter } from '../../redux/slices/cardsSlice';
-import usePopup from '../../hooks/usePopup';
+import usePopup, { PopupReturn } from '../../hooks/usePopup';
+import { RootState, useAppDispatch } from '../../redux/store';
+import settingsImg from '../../assets/img/settings.svg';
 import './settingsBar.scss';
 
-function SettingsBar({ counterItems }) {
-  const { showPopup, onShowPopup, popupRef } = usePopup('popup--show', 'settings-btn');
+type SettingsBar = {
+  counterItems: React.ReactNode[];
+};
+
+type SettingsPopup = SettingsBar & PopupReturn;
+
+const SettingsBar: React.FC<SettingsBar> = ({ counterItems }) => {
+  const { showPopup, onShowPopup, popupRef } = usePopup({
+    className: 'popup--show',
+    btnClassName: 'settings-btn',
+  });
 
   return (
     <>
@@ -20,24 +29,20 @@ function SettingsBar({ counterItems }) {
         <img src={settingsImg} alt='settingsImg' style={{ maxWidth: '50px' }} />
       </button>
 
-      <Portal>
-        <SettingsPopup
-          showPopup={showPopup}
-          onShowPopup={onShowPopup}
-          popupRef={popupRef}
-          counterItems={counterItems}
-        />
-      </Portal>
+      <SettingsPopup
+        showPopup={showPopup}
+        onShowPopup={onShowPopup}
+        popupRef={popupRef}
+        counterItems={counterItems}
+      />
     </>
   );
-}
+};
 
-const Portal = ({ children }) => ReactDOM.createPortal(children, document.body);
-
-const SettingsPopup = ({ showPopup, onShowPopup, popupRef, counterItems }) => {
-  const dispatch = useDispatch();
-  const gameCounter = useSelector((state) => state.cards.gameCounter);
-  const { gameCounterMain, theme, hideJDK, hideHUD } = useSelector((state) => state.settings);
+const SettingsPopup: React.FC<SettingsPopup> = ({ showPopup, onShowPopup, popupRef, counterItems }) => {
+  const dispatch = useAppDispatch();
+  const gameCounter = useSelector((state: RootState) => state.cards.gameCounter);
+  const { gameCounterMain, theme, hideJDK, hideHUD } = useSelector((state: RootState) => state.settings);
 
   useEffect(() => {
     theme === 'white'
@@ -45,17 +50,21 @@ const SettingsPopup = ({ showPopup, onShowPopup, popupRef, counterItems }) => {
       : (document.body.className = 'wrapp-popup');
   }, [theme]);
 
+  const clearGames = () => {
+    dispatch(clearGameCounter());
+    dispatch(clearBarStorage());
+  };
+
   return (
     <div ref={popupRef} className={classNames('popup settings-popup', { 'popup--show': showPopup })}>
       <h3 className='settings-popup__title'>settings</h3>
       <ul>
         <li className='settings-popup__item'>
-          <label
-            className='settings-popup__label'
-            onChange={(e) => dispatch(toggleGameCounter(e.target.checked))}>
+          <label className='settings-popup__label'>
             <input
               className='settings-popup__checkbox move-game-counter'
               defaultChecked={gameCounterMain}
+              onChange={(e) => dispatch(toggleGameCounter(e.target.checked))}
               type='checkbox'
             />
             <div></div>
@@ -90,20 +99,9 @@ const SettingsPopup = ({ showPopup, onShowPopup, popupRef, counterItems }) => {
         </li>
 
         <li className='settings-popup__item clear-bar'>
-          <button
-            onClick={() => dispatch(clearBarStorage())}
-            className='settings-popup__label settings-popup__label--line'>
+          <button onClick={clearGames} className='settings-popup__label settings-popup__label--line'>
             <div></div>
             <p className='settings-popup__text settings-popup__text--line'>clear the game story</p>
-          </button>
-        </li>
-
-        <li className='settings-popup__item'>
-          <button
-            onClick={() => dispatch(clearGameCounter())}
-            className='settings-popup__label settings-popup__label--line'>
-            <div></div>
-            <p className='settings-popup__text settings-popup__text--line'>clear the counting game</p>
           </button>
         </li>
       </ul>

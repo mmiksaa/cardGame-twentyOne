@@ -1,16 +1,25 @@
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import classNames from 'classnames';
 
-import { CardBlock, Button, Github } from '../';
-import { removeCard, setEndGame } from '../../redux/slices/cardsSlice';
+import { CardBlock, Button, Github } from '..';
+import { desicionType, removeCard, setEndGame } from '../../redux/slices/cardsSlice';
+import { RootState, useAppDispatch } from '../../redux/store';
 import './table.scss';
 
-function Table() {
-  const dispatch = useDispatch();
-  const { allCards, endGame, restartGame, tableBlur } = useSelector((state) => state.cards);
-  const hideJDK = useSelector((state) => state.settings.hideJDK);
-  const [currentCards, setCurrentCards] = useState({
+type currentCards = {
+  dealer: number[];
+  you: number[];
+  totalDealer: number;
+  totalYou: number;
+};
+
+const Table: React.FC = () => {
+  const dispatch = useAppDispatch();
+
+  const { allCards, endGame, restartGame, tableBlur } = useSelector((state: RootState) => state.cards);
+  const hideJDK = useSelector((state: RootState) => state.settings.hideJDK);
+  const [currentCards, setCurrentCards] = useState<currentCards>({
     dealer: [],
     you: [],
     totalDealer: 0,
@@ -23,7 +32,7 @@ function Table() {
   const [giveDealerCart, setGiveDealerCart] = useState(false);
 
   useEffect(() => {
-    //restart the game (puts state on them first pos)
+    //restart the game (puts state on the first pos)
 
     setFlagStartGame(1);
     setCurrentCards({ dealer: [], you: [], totalDealer: 0, totalYou: 0 });
@@ -57,7 +66,7 @@ function Table() {
 
     const giveMoreCond = giveDealerCart || you === 21 || (you <= 21 && currentCards.you.length === 5);
 
-    const setСondition = (condition, endGame) => {
+    const setСondition = (condition: boolean, endGame: desicionType) => {
       if (condition && !flag) {
         flag = true;
         setTimeout(() => dispatch(setEndGame(endGame)), 500);
@@ -72,20 +81,32 @@ function Table() {
     // eslint-disable-next-line
   }, [currentCards, giveDealerCart]);
 
-  const createCard = (key) => {
+  const createCard = (key: string) => {
     const totalKey = 'total' + key[0].toUpperCase() + key.slice(1);
-    if (currentCards[key].length < 5 && currentCards[totalKey] < 21) {
-      const obj = { ...currentCards };
+
+    const obj = { ...currentCards };
+    const arrayCards = obj[key as keyof currentCards];
+    let totalCards = obj[totalKey as keyof currentCards];
+
+    if (
+      Array.isArray(arrayCards) &&
+      arrayCards.length < 5 &&
+      typeof totalCards === 'number' &&
+      totalCards < 21
+    ) {
       let random = Math.floor(Math.random() * allCards.length);
 
-      obj[key].push(allCards[random]);
-      obj[totalKey] = obj[key].reduce((total, current) => total + current, 0);
+      arrayCards.push(allCards[random]);
+      totalCards = arrayCards.reduce((total, current) => total + current, 0);
+
+      (obj[totalKey as keyof currentCards] as number) = totalCards;
 
       dispatch(removeCard(random));
       setCurrentCards(obj);
 
       setDisableBtnFold(obj.totalYou < obj.totalDealer || obj.totalYou >= 21);
       setDisableBtnMore(obj.totalDealer > 21 || obj.totalYou >= 21 || obj.you.length === 5);
+
       return { random, obj };
     }
   };
@@ -97,7 +118,7 @@ function Table() {
         setGiveDealerCart(true);
       }, 800);
     } else {
-      if (currentCards.totalDealer === currentCards.totalYou && currentCards.totalDealer >= 16) {
+      if (currentCards.totalDealer === currentCards.totalYou && currentCards.totalDealer >= 15) {
         setGiveDealerCart(true);
       } else {
         setGiveDealerCart(true);
@@ -108,16 +129,21 @@ function Table() {
     setDisableBtnFold(true);
   };
 
-  const createCardBlock = (key) => {
-    return currentCards[key].map((item, index) => (
-      <li d={index} key={index} className='table__item'>
-        <CardBlock hideJDK={hideJDK}>{item}</CardBlock>
-      </li>
-    ));
+  const createCardBlock = (key: string) => {
+    const obj = currentCards[key as keyof currentCards];
+
+    if (typeof obj === 'object') {
+      return obj.map((item, index) => (
+        <li key={index} className='table__item'>
+          <CardBlock hideJDK={hideJDK}>{item}</CardBlock>
+        </li>
+      ));
+    }
   };
 
-  const createMiniCard = (key) => {
-    const arr = currentCards[key] ? [...currentCards[key]].reverse() : false;
+  const createMiniCard = (key: string) => {
+    const obj = currentCards[key as keyof currentCards];
+    const arr = obj && typeof obj === 'object' ? [...obj].reverse() : false;
     return (
       arr &&
       arr.map((item, index) => (
@@ -131,18 +157,6 @@ function Table() {
   return (
     <div className={classNames('table', { 'table--blur': endGame || tableBlur })}>
       <div className='table__inner'>
-        <ul className='table__count-list'>{createMiniCard('dealer')}</ul>
-        <ul className='table__list'>{createCardBlock('dealer')}</ul>
-        <span
-          className={classNames('table__count', {
-            'table__count--gold': currentCards.totalDealer === 21,
-            'table__count--lose': currentCards.totalDealer > 21,
-          })}>
-          {currentCards.totalDealer}
-        </span>
-      </div>
-
-      <div className='table__inner'>
         <ul className='table__count-list'>{createMiniCard('you')}</ul>
         <ul className='table__list'>{createCardBlock('you')}</ul>
         <span
@@ -151,6 +165,18 @@ function Table() {
             'table__count--lose': currentCards.totalYou > 21,
           })}>
           {currentCards.totalYou}
+        </span>
+      </div>
+
+      <div className='table__inner'>
+        <ul className='table__count-list'>{createMiniCard('dealer')}</ul>
+        <ul className='table__list'>{createCardBlock('dealer')}</ul>
+        <span
+          className={classNames('table__count', {
+            'table__count--gold': currentCards.totalDealer === 21,
+            'table__count--lose': currentCards.totalDealer > 21,
+          })}>
+          {currentCards.totalDealer}
         </span>
       </div>
 
@@ -174,6 +200,6 @@ function Table() {
       </div>
     </div>
   );
-}
+};
 
 export default Table;

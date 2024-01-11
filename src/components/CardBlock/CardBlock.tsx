@@ -1,7 +1,12 @@
 import classNames from 'classnames';
 import './cardBlock.scss';
 
-function CardBlock({ children, hideJDK }) {
+type CardBlock = {
+  children: React.ReactNode;
+  hideJDK: boolean;
+};
+
+const CardBlock: React.FC<CardBlock> = ({ children, hideJDK }) => {
   if (!hideJDK) {
     children = children === 11 ? 't' : children;
     children = children === 2 ? 'j' : children;
@@ -17,6 +22,6 @@ function CardBlock({ children, hideJDK }) {
       <div className='card__name'>{children}</div>
     </div>
   );
-}
+};
 
 export default CardBlock;

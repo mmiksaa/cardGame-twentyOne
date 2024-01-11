@@ -1,26 +1,40 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
+export type desicionType = 'win' | 'draw' | 'lose' | '';
+
+interface cardsSliseState {
+  allCards: number[];
+  endGame: desicionType;
+  restartGame: boolean;
+  tableBlur: boolean;
+  barStorage: string[][];
+  gameCounter: number[];
+}
+
+const barStorage = localStorage.getItem('bar');
+const gameCounterStorage = localStorage.getItem('gameCount');
+
+const initialState: cardsSliseState = {
   allCards: [
     2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 6, 6, 6, 6, 7, 7, 7, 7, 8, 8, 8, 8, 9, 9, 9, 9, 10, 10, 10, 10, 11,
     11, 11, 11,
   ],
-  endGame: null,
-  restartGame: 0,
+  endGame: '',
+  restartGame: false,
   tableBlur: false,
-  barStorage: JSON.parse(localStorage.getItem('bar')) || [],
-  gameCounter: JSON.parse(localStorage.getItem('gameCount')) || [0, 0, 0],
+  barStorage: barStorage !== null ? JSON.parse(barStorage) : [],
+  gameCounter: gameCounterStorage !== null ? JSON.parse(gameCounterStorage) : [0, 0, 0],
 };
 
 const cardsSlise = createSlice({
   name: 'cards',
   initialState,
   reducers: {
-    removeCard: (state, action) => {
+    removeCard: (state, action: PayloadAction<number>) => {
       state.allCards.splice(action.payload, 1);
     },
 
-    setEndGame: (state, action) => {
+    setEndGame: (state, action: PayloadAction<desicionType>) => {
       state.endGame = action.payload;
 
       switch (action.payload) {
@@ -41,16 +55,17 @@ const cardsSlise = createSlice({
     },
 
     restartGame: (state) => {
-      state.endGame = null;
-      state.restartGame = state.restartGame ? 0 : 1;
+      state.endGame = '';
+      state.restartGame = state.restartGame ? false : true;
       state.tableBlur = false;
       state.allCards = initialState.allCards;
     },
 
-    setBarStorage: (state, action) => {
+    setBarStorage: (state, action: PayloadAction<string[]>) => {
       if (state.barStorage.length > 20) {
         state.barStorage.splice(-1, 1);
       }
+
       state.barStorage.unshift(action.payload);
       localStorage.setItem('bar', JSON.stringify(state.barStorage));
     },
@@ -65,7 +80,7 @@ const cardsSlise = createSlice({
       localStorage.setItem('gameCount', JSON.stringify(state.gameCounter));
     },
 
-    tableBlur: (state, action) => {
+    tableBlur: (state, action: PayloadAction<boolean>) => {
       state.tableBlur = action.payload;
     },
   },
@@ -78,7 +93,6 @@ export const {
   removeCard,
   setEndGame,
   restartGame,
-  clearRestartGame,
   setBarStorage,
   tableBlur,
   clearGameCounter,
